@@ -1,0 +1,33 @@
+
+  <section id="filtered-bookings-section" class="container">
+    <h2>예약 내역</h2>
+   <strong>날짜: </strong>{{date}}<br> <strong>시간: </strong>{{time}}
+    <table>
+    <thead>
+      <th>Name</th>
+      <th>When</th>
+      <th>Phone</th>
+      <th>People</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      {{#each filteredBookings}}
+      <tr>
+        <td>{{firstName}} {{lastName}} </td>
+         <td>{{date}} | {{time}}</td>
+        <td>{{phone}} {{email}}</td>
+        <td>{{people}}</td>
+        <td>
+          <!-- DELETE -->
+          <form action="/admin/{{id}}/delete" method="POST">
+            <button class="btn btn-danger" type="submit">삭제</button>
+          </form>
+          <!-- EDIT -->
+            <a class="btn btn-primary" href="/admin/{{id}}/edit">수정</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+         <p><a href="/auth/private">모든 예약 보기</a></p>
+  </section>

@@ -1,0 +1,15 @@
+ <form id="form" action="/admin/signup" method="POST">
+    <label for="username">이름</label><br>
+    <input type="text" name="username"
+      placeholder="name">
+
+    <label for="password">비밀번호</label><br>
+    <input type="password" name="password"
+      placeholder="password">
+
+
+{{#if errorMessage}}
+  <div class="error-message">{{ errorMessage }}</div>
+{{/if}}
+    <button type="submit">회원가입</button>
+  </form>

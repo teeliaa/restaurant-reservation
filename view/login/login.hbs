@@ -1,0 +1,16 @@
+<section class="container text-center" id="login-container">
+     <h2>관리자 로그인</h2>
+    <p>사용자이름: admin</p>
+    <p>비밀번호: admin</p>
+  <form class="container text-center" action="/auth/login" method="POST" id="form">
+    <input placeholder="이름" type="text" name="username">
+    <input placeholder="비밀번호" type="password" name="password">
+
+    {{#if errorMessage }}
+    <div class="error-message">{{ errorMessage }}</div>
+    {{/if}}
+
+    <button class="btn btn-success" type="submit">로그인</button>
+
+  </form>
+</section>

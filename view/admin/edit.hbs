@@ -1,0 +1,19 @@
+<section id="edit-section" class="container">
+   <h2 class="text-center">예약 수정하기</h2>
+  <div id="edit-form-wrapper">
+  
+  
+  <form action="/admin/{{thisBooking.id}}/edit" method="POST">  
+     <p>날짜</p><input type="text" name="date" value="{{thisBooking.date}}">
+     <p>시간</p><input type="text" name="time" value="{{thisBooking.time}}">
+       <p>이름</p> <input type="text" name="firstName" value="{{thisBooking.firstName}}">
+        <p>성</p>  <input type="text" name="lastName" value="{{thisBooking.lastName}}">
+        <p>인원</p> <input type="number" name="people" value="{{thisBooking.people}}">
+         <p>전화번호</p> <input type="tel" name="phone" value="{{thisBooking.phone}}">
+         
+ 
+      <button class="btn btn-primary">Edit</button>
+
+  </form>
+  </div>
+</section>

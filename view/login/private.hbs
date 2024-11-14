@@ -1,0 +1,77 @@
+<div class="btn-container text-right">
+  <a href="/admin/settings">설정 페이지</a>
+  <a class="logout-button" href="/auth/logout">로그아웃</a>
+</div>
+
+
+<section class="container">
+
+</section>
+
+
+<section class="container" id="bookings-section">
+
+  <!-- FILTER-->
+  <h2>모든 예약</h2>
+  <form action="/admin/filter-bookings" action="GET">
+    <p>날짜 선택: <input autocomplete="off" type="text" class="datepicker-admin" name="date" required></p>
+    <p>시간 선택 <select name="time"></p>
+    <option value="{{values.[1].Slot1}}">{{values.[1].Slot1}}</option>
+    <option value="{{values.[1].Slot2}}">{{values.[1].Slot2}}</option>
+    </select>
+    <button style="width: 80px" class="btn btn-primary" type="submit">Filter</button><br><br>
+  </form>
+
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>When</th>
+      <th>Phone</th>
+      <th>People</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      {{#each values.[0]}}
+      <tr>
+        <td>{{firstName}} {{lastName}} </td>
+         <td>{{date}} | {{time}}</td>
+        <td>{{phone}} </td>
+        <td>{{people}}</td>
+        <td>
+          <!-- DELETE -->
+          <form action="/admin/{{id}}/delete" method="POST">
+            <button class="btn btn-danger" type="submit">Delete</button>
+          </form>
+          <!-- EDIT -->
+            <a class="btn btn-primary" href="/admin/{{id}}/edit">Edit</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>
+
+
+<!-- ADD -->
+<section class="container" id="add-booking-section">
+
+
+  <h2>예약 추가</h2>   
+  <form action="/admin/add-booking" method="POST">
+
+    <input autocomplete="off" placeholder="날짜 선택" type="text" class="datepicker-admin" name="date">
+    <!-- same #id 'datepicker' of frontend datepicker -->
+    <select name="time">
+      <option value="{{values.[1].Slot1}}">{{values.[1].Slot1}}</option>
+      <!-- values coming from the /auth/private route in auth.js -->
+      <option value="{{values.[1].Slot2}}">{{values.[1].Slot2}}</option>
+    </select>
+    <input type="text" name="firstName" placeholder="First name">
+    <input type="text" name="lastName" placeholder="Last name">
+    <input type="number" name="people" placeholder="How many people">
+    <input type="tel" name="phone" placeholder="Phone">
+
+    <button class="btn btn-success" type="submit">추가하기</button>
+
+    <form>
+</section>

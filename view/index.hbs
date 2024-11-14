@@ -1,0 +1,77 @@
+<section id="home-section" class="container-fluid">
+
+  <div class="row">
+    <div class="col-lg-6"> <!-- left side -->
+      <div class="menu">
+        <div class="logo">
+          <h3>LOGO</h3>
+        </div>
+        <div>
+          <ul>
+            <a href="#"><li>Home</li></a>
+            <a href="#"><li>About Us</li></a>
+            <a href="#"><li>Our Menu</li></a>
+            <a href="#"><li>Contact Us</li></a>
+          </ul>
+        </div>
+      </div>
+      <div id="hero-heading-wrapper">
+                <img src="image/foodicon.png" width="200px">
+        <h1>대표 <span>메뉴</span></h1>
+        <p id="hero-subtitle">오즈의 브런치 <img src="../public/image/brunch.jpg" alt="brunch-image" style="width: 50px; height: 50px; vertical-align: middle; margin-left: 8px;">
+          - 오직 주인 마음대로 브런치<br>매주 달라지는 브런치 뷔페를 경험해보세요!.</p>
+         <a href="#"> <p id="cta-hero"> 지금 바로 예약하세요 </p></a>
+     
+   
+      </div>
+    </div>
+
+    <div class="col-lg-6" id="booking-section">  <!-- right side -->
+      <form action="/complete-booking">
+
+      
+           <div id="datepicker-wrapper" class="input-wrapper">  <!-- date -->
+               <div> <i class="fa fa-calendar"></i></div>
+               <div>
+               <input autocomplete="off" type="text" id="datepicker" name="date" placeholder="날짜" required>
+               </div>
+           </div>
+           
+
+   <div class="input-wrapper">  <!-- time -->
+     <div>
+       <i class="fa fa-clock"></i>
+     </div>
+        <div id="time-select">
+           </i> <h5>시간<input type="hidden" id="time" name="time" value="" required></h5>
+          <span></span>
+          <ul class="display">
+            <div id="first-slot-li">
+              <strong><span></span></strong> <!-- time slot -->
+              <p></p>   <!-- sets left -->
+            </div>
+            <div id="second-slot-li">
+             <strong><span></span></strong> <!-- time slot -->
+              <p></p>     <!-- sets left -->
+            </div>
+          </ul>
+         </div>
+      </div>
+
+     <div class="input-wrapper">    <!-- people -->
+         <i class="fa fa-users"></i> 
+        <input type="number" id="people" name="people" placeholder="인원" required>
+     </div>
+
+        <div class="submit-button-wrapper">  <!-- button -->
+          <button type="submit" class="submit-button">확인</button>
+        </div>
+        <form>
+        
+          {{#if error}}
+          필수값이 입력되지 않았습니다!
+          {{/if}}
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<section class="container text-center" style="margin-top: 120px">
+
+ 
+  <h2>레스토랑을 예약해주셔서 감사합니다</h2>
+  {{#if succesfullMessage}}
+    <p>예약이 완료되었습니다.<br>예약 정보는 발신된 예약 확인 메일을 통해 보실 수 있습니다.</p>
+  {{/if}}
+
+
+{{!-- <h2>예약 내용</h2>
+{{date}}
+{{time}}
+{{people}}
+{{firstName}}
+{{lastName}}
+{{phone}}
+{{email}}
+{{message}} --}}
+
+<a style="display:block; margin-top: 40px"href="/auth/private">관리자 확인</a> 
+</section>

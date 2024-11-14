@@ -1,0 +1,80 @@
+{{!-- <section class="container" id="complete-booking">
+<h2>예약 정보:</h2>
+<p><strong>날짜: </strong>{{date}}</p>
+<p><strong>시간: </strong>{{time}}</p>
+<p><strong>인원: </strong> {{people}}</p>
+<h3>고객 정보:</h3>
+<form action="/confirm" method="POST">
+<div style="display: none">  
+  <input type="text" name="date" value="{{date}}" readonly>
+  <input type="number" name="people" value="{{people}}" readonly>
+  <input type="text" name="time" value="{{time}}" readonly>
+</div>
+<input type="text" name="firstName" placeholder="이름" required>
+  <input type="text" name="lastName" placeholder="성" required>
+  <input type="tel" name="phone" placeholder="휴대폰 번호" required>
+  <input type="email" name="email" placeholder="이메일" required>
+  <textarea type="text" name="message" id="message"
+    placeholder="기타 요구사항이 있으면 알려주세요! ex) 알러지 정보"></textarea>
+
+  <button type="submit">예약하기</button>
+</form>
+
+ {{#if errorMessage}}
+    {{errorMessage}}
+    {{/if}}
+
+</section>
+
+ --}}
+<section id="home-section" class="container-fluid">
+
+
+  <div class="row">
+    <div class="col-lg-6"> <!-- left side -->
+      <div class="menu">
+        <div class="logo">
+          <h3>LOGO</h3>
+        </div>
+        <div>
+          <ul>
+            <a href="#"><li>Home</li></a>
+            <a href="#"><li>About Us</li></a>
+            <a href="#"><li>Our Menu</li></a>
+            <a href="#"><li>Contact Us</li></a>
+          </ul>
+        </div>
+      </div>
+      <div id="hero-heading-wrapper">
+                <img src="image/foodicon.png" width="200px">
+        <h1>대표 <span>메뉴</span></h1>
+        <p id="hero-subtitle">오즈의 브런치 <img src="../public/image/brunch.jpg" alt="brunch-image" style="width: 50px; height: 50px; vertical-align: middle; margin-left: 8px;">
+        - 오직 주인 마음대로 브런치<br>매주 달라지는 브런치 뷔페를 경험해보세요!</p>
+         <a href="#"> <p id="cta-hero"> 지금 바로 예약하세요</p></a>
+     
+   
+      </div>
+    </div>
+
+    <div class="col-lg-6" id="complete-booking">  <!-- right side -->
+       <h2>예약 정보:</h2>
+           <p><strong>날짜: </strong>{{date}}</p>
+           <p><strong>시간: </strong>{{time}}</p>
+           <p><strong>인원: </strong> {{people}}</p>
+       <h3>고객 정보:</h3>
+         <form action="/confirm" method="POST">
+          <div style="display: none">  
+          <input type="text" name="date" value="{{date}}" readonly>
+          <input type="number" name="people" value="{{people}}" readonly>
+          <input type="text" name="time" value="{{time}}" readonly>
+          </div>
+          <input type="text" name="firstName" placeholder="이름" required>
+          <input type="text" name="lastName" placeholder="성" required>
+          <input type="tel" name="phone" placeholder="휴대폰 번호" required>
+          <input type="email" name="email" placeholder="이메일" required>
+        
+          <button class="complete-booking-button" type="submit">예약하기</button>
+      </form>
+    </div>
+  </div>
+</section>
