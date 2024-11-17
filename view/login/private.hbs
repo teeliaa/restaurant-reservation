@@ -60,16 +60,14 @@
   <form action="/admin/add-booking" method="POST">
 
     <input autocomplete="off" placeholder="날짜 선택" type="text" class="datepicker-admin" name="date">
-    <!-- same #id 'datepicker' of frontend datepicker -->
     <select name="time">
       <option value="{{values.[1].Slot1}}">{{values.[1].Slot1}}</option>
-      <!-- values coming from the /auth/private route in auth.js -->
       <option value="{{values.[1].Slot2}}">{{values.[1].Slot2}}</option>
     </select>
-    <input type="text" name="firstName" placeholder="First name">
-    <input type="text" name="lastName" placeholder="Last name">
-    <input type="number" name="people" placeholder="How many people">
-    <input type="tel" name="phone" placeholder="Phone">
+    <input type="text" name="firstName" placeholder="이름">
+    <input type="text" name="lastName" placeholder="성">
+    <input type="number" name="people" placeholder="인원 수">
+    <input type="tel" name="phone" placeholder="전화번호">
 
     <button class="btn btn-success" type="submit">추가하기</button>
 
