@@ -3,14 +3,10 @@
   <a class="logout-button" href="/auth/logout">로그아웃</a>
 </div>
 
-
 <section class="container">
-
 </section>
 
-
 <section class="container" id="bookings-section">
-
   <!-- FILTER-->
   <h2>모든 예약</h2>
   <form action="/admin/filter-bookings" action="GET">
@@ -19,15 +15,15 @@
     <option value="{{values.[1].Slot1}}">{{values.[1].Slot1}}</option>
     <option value="{{values.[1].Slot2}}">{{values.[1].Slot2}}</option>
     </select>
-    <button style="width: 80px" class="btn btn-primary" type="submit">Filter</button><br><br>
+    <button style="width: 80px" class="btn btn-primary" type="submit">예약 검색</button><br><br>
   </form>
 
   <table>
     <thead>
-      <th>Name</th>
-      <th>When</th>
-      <th>Phone</th>
-      <th>People</th>
+      <th>이름</th>
+      <th>날짜</th>
+      <th>전화번호</th>
+      <th>인원</th>
       <th>Action</th>
     </thead>
     <tbody>
@@ -40,10 +36,10 @@
         <td>
           <!-- DELETE -->
           <form action="/admin/{{id}}/delete" method="POST">
-            <button class="btn btn-danger" type="submit">Delete</button>
+            <button class="btn btn-danger" type="submit">삭제</button>
           </form>
           <!-- EDIT -->
-            <a class="btn btn-primary" href="/admin/{{id}}/edit">Edit</a>
+            <a class="btn btn-primary" href="/admin/{{id}}/edit">수정</a>
         </td>
       </tr>
       {{/each}}
@@ -51,14 +47,11 @@
   </table>
 </section>
 
-
 <!-- ADD -->
 <section class="container" id="add-booking-section">
 
-
   <h2>예약 추가</h2>   
   <form action="/admin/add-booking" method="POST">
-
     <input autocomplete="off" placeholder="날짜 선택" type="text" class="datepicker-admin" name="date">
     <select name="time">
       <option value="{{values.[1].Slot1}}">{{values.[1].Slot1}}</option>
@@ -70,6 +63,5 @@
     <input type="tel" name="phone" placeholder="전화번호">
 
     <button class="btn btn-success" type="submit">추가하기</button>
-
     <form>
 </section>
