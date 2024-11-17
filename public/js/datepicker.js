@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
         $(element).datepicker({
             dateFormat: "dd MM yy",
             beforeShowDay: unavailable,
-            yearRange: '2024:204',
+            yearRange: '2024:2024',
             minDate: 0,  // 오늘 날짜부터 표시
             onSelect: () => {
                 countSeat_Slot1();
