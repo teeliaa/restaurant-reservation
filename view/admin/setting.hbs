@@ -1,6 +1,6 @@
 <div class="btn-container text-right">
-  <a href="/auth/private">Bookings page</a>
-  <a class="logout-button" href="/auth/logout">Logout</a>
+  <a href="/auth/private">예약 페이지</a>
+  <a class="logout-button" href="/auth/logout">로그아웃</a>
 </div>
 
 <section id="settings-container" class="container">
@@ -12,13 +12,13 @@
       {{#each config}}
       <form action="/admin/config" method="POST">
         <h2>설정:</h2>
-        <p style="width: 70%">날짜별 이용 가능한 시간대와 좌석을 정할 수 있습니다. </p>
-        <span><strong>최대 좌석 수</strong></span><input id="maxSeats" type="number" name="maxSeats"
-          value={{maxSeats}} required>
-        <span><strong>1st Time</strong></span><input id="first-time-slot" type="number" name="_1Slot"
-          value={{_1Slot}} required>
-        <span><strong>2nd Time</strong></span><input id="second-time-slot" type="number" name="_2Slot"
-          value={{_2Slot}} required>
+        <p style="width: 70%">날짜별 이용 가능한 시간대와 좌석을 정할 수 있습니다.</p>
+        <span><strong>최대 좌석 수</strong></span><input id="maxSeat" type="number" name="maxSeat"
+          value={{maxSeat}} required>
+        <span><strong>1st Time</strong></span><input id="first-time-slot" type="number" name="Slot1"
+          value={{Slot1}} required>
+        <span><strong>2nd Time</strong></span><input id="second-time-slot" type="number" name="Slot2"
+          value={{Slot2}} required>
         <button class="btn btn-primary">확인</button>
       </form>
       {{/each}}
@@ -32,13 +32,13 @@
       </ul>
 
       <form action="/admin/settings/unavailable-dates/edit" method="POST">
-        <input type="text" name="newUnavailableDate" placeholder="day-month-year">
+        <input type="text" name="newUnavailableDate" placeholder="일-월-년">
         <button class="btn btn-success">날짜 추가하기</button>
       </form>
 
 
       <form action="/admin/settings/unavailable-dates/delete" method="POST">
-        <input type="text" name="deleteUnavailableDate" placeholder="day-month-year">
+        <input type="text" name="deleteUnavailableDate" placeholder="일-월-년">
         <button class="btn btn-danger">날짜 삭제하기</button>
       </form>
     </div>
