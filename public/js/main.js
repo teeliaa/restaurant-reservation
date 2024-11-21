@@ -119,7 +119,7 @@ function changeMaxPeopleInput() {
     var seatsBooked = 0;
 
     axios
-        .get("/list-of-bookings-per-date-and-time?date=" + date + "&time=" + time) 
+        .get("/list-of-bookings-date-time?date=" + date + "&time=" + time) 
         .then(bookings => {
             bookings.data.forEach(booking => {
                 seatsBooked += booking.people;
