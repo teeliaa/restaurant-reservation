@@ -3,30 +3,29 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const configSchema = new Schema({
-    maxSeat: {
-      type: Number,
-      required: true, 
-      min: 1, 
-    },
-    Slot1: {
-      type: String,
-      required: true, // 필수 필드
-      match: /^([01]\d|2[0-3]):([0-5]\d)$/, // 시간 형식 (HH:mm)
-    },
-    Slot2: {
-      type: String,
-      required: true, // 필수 필드
-      match: /^([01]\d|2[0-3]):([0-5]\d)$/, // 시간 형식 (HH:mm)
-    },
     unavailableDates: {
       type: [Date], 
-      default: [], 
+      default: [],
+      validate: {
+        validator: function(dates){
+          const uniqueDates = [...new Set(dates.map(d=>d.toISOString()))];
+          return uniqueDates.length === dates.length;
+        },
+        message: '중복된 예약 불가 날짜가 존재합니다.',
+      },
     },
+    timeSlots: {
+      type: [String],
+      default: []
+    },
+    maxSeats: {
+      type: Number,
+      default: 0
+    }
   },
   {
     timestamps: true, 
-  }
-);
+  });
 
 // 모델 생성
 const Config = mongoose.model('Config', configSchema);

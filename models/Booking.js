@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema({
       date: {
-        type: String,
+        type: Date,
         required: true, // 필수 필드
       },
       people: {
@@ -14,6 +14,7 @@ const bookingSchema = new Schema({
       time: {
         type: String,
         required: true,
+        match: /^([01]\d|2[0-3]):([0-5]\d)$/,
       },
       firstName: {
         type: String,
