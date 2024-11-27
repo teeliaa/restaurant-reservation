@@ -1,66 +1,68 @@
-let unavailableDates;
-
-function unavailable(date) {
-    const dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-    if (unavailableDates.includes(dmy)) {
-        return [false, "", "Unavailable"];
-    } else {
-        return [true, ""];
-    }
-}
-
-// date Picker 설정
-document.addEventListener("DOMContentLoaded", function() {
-    const datepickerElement = document.getElementById("datepicker");
+document.addEventListener("DOMContentLoaded", function () {
+  const datepickerElement = document.getElementById("date");
+    const unavailableDatesContainer = document.getElementById("unavailable-dates-container");
+  
     if (datepickerElement) {
-        $(datepickerElement).datepicker({
-            dateFormat: "dd MM yy",
-            beforeShowDay: unavailable,
-            yearRange: '2024:2024',
-            minDate: 0,  // 오늘 날짜부터 표시
-            onSelect: () => {
-                setMaxSeat();
-                countSeat_Slot1();
-                countSeat_Slot2();
-            },
-            showAnim: "toggle"
+      $(datepickerElement).datepicker({
+        dateFormat: "yy-mm-dd",
+        beforeShowDay: function (date) {
+          const dateString = $.datepicker.formatDate("yy-mm-dd", date);
+          return unavailableDates.includes(dateString) ? [false] : [true];
+        },
+        minDate: 0,
+      });
+    }
+  
+    // 예약 불가 날짜 추가
+    document.getElementById("add-date-button")?.addEventListener("click", function () {
+      const date = document.getElementById("new-date").value;
+
+      const formattedDate = new Date(date).toISOString().split("T")[0];
+
+      axios.post("/admin/settings/unavailable-dates/add", { date: formattedDate })
+        .then(response => {
+          unavailableDates = response.data.unavailableDates.map(d => 
+            new Date(d).toISOString().split("T")[0]
+          );
+          updateUnavailableDatesUI(unavailableDates);
+        })
+        .catch(error => console.error(error));
+    });
+  
+    // 예약 불가 날짜 삭제
+    unavailableDatesContainer?.addEventListener("click", function (e) {
+      if (e.target.classList.contains("remove-date-button")) {
+        const date = e.target.dataset.date;
+
+        fetch("/admin/settings/unavailable-dates/remove", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ date }),
+      })
+          .then((response) => response.json())
+          .then((data) => {
+              if (data.unavailableDates) {
+                  updateUnavailableDatesUI(data.unavailableDates);
+              }
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    });
+  
+    function updateUnavailableDatesUI(dates) {
+      unavailableDatesContainer.innerHTML = "";
+        dates.forEach((date) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${date}</td>
+                <td>
+                    <button class="btn btn-danger remove-date-button" data-date="${date}">삭제</button>
+                </td>
+            `;
+            unavailableDatesContainer.appendChild(row);
         });
     }
-
-    // adminDate Picker 설정
-    const datepickerAdminElements = document.querySelectorAll(".datepicker-admin");
-    datepickerAdminElements.forEach(element => {
-        $(element).datepicker({
-            dateFormat: "dd MM yy",
-            beforeShowDay: unavailable,
-            yearRange: '2024:2024',
-            minDate: 0,  // 오늘 날짜부터 표시
-            onSelect: () => {
-                countSeat_Slot1();
-                countSeat_Slot2();
-            },
-            showAnim: "toggle"
-        });
-    });
-
-    // 비활성화된 날짜 설정 함수 호출
-    setUnavailableDates();
-});
-
-function setUnavailableDates() {
-    axios.get("/unavailable-dates")
-        .then(response => {
-            unavailableDates = response.data;
-            const container = document.getElementById("unavailable-dates-container");
-            if (container) {
-                unavailableDates.forEach(date => {
-                    const dateElement = document.createElement("p");
-                    dateElement.textContent = date;
-                    container.appendChild(dateElement);
-                });
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        });
-}
+  });
+  

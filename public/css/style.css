@@ -20,77 +20,37 @@ h2, h3 {
 
 a {
   color: #8aa95b;
+  text-decoration: none !important;
 }
 
 a:hover {
-  text-decoration: none !important;
+  text-decoration: none;
 }
+
 
 p {
   color: #899095;
   font-size: 15px;
 }
 
-.display-none {
-  display: none;
-}
-
-.highlight a {
-  background-color: #f6c717 !important;
-  color: #ffffff !important; 
-}
-
-#time-select {
-  border: 0px solid #e6e6e6;
-  cursor: pointer;
-  padding: 4px 0; 
-}
-
-#time-select span,
-#time-select h5 {
-  position: relative;
-  left: 20px; 
-}
-
-#datepicker-wrapper {
-  margin-top: 40px; 
-}
-
-.display {
-  display: none; 
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0; 
-}
 
 #preview-section {
   background-image: url('../image/hero_image\ \(1\).jpg');
-  opacity: 0.7;
   height: 110vh;
   display: flex;
-  align-items: center; 
+  align-items: center;
+  justify-content: center; 
 }
 
 #preview-wrapper {
   background-color: white;
   box-shadow: 13px 32px 36px -14px rgba(0, 0, 0, 0.4);
   border-radius: 8px;
-  position: relative;
-  bottom: 20px; 
-}
-
-#preview-section h3 {
-  font-size: 18px;
-  color: #899095;
-  position: relative;
-  top: 10px; 
-}
-
-#preview-wrapper {
-  padding: 80px 0;
+  padding: 80px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center; 
 }
 
@@ -101,24 +61,25 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #preview-section h1 span {
-  font-weight: 800; 
-}
-
-#preview-section h1 em {
-  font-size: 32px;
+  font-weight: 800;
+  font-size: 70px;
   font-family: "Dancing Script", cursive;
   position: relative;
   bottom: 5px; 
 }
 
+
 #subtitle-preview {
-  font-size: 18px;
-  line-height: 32px; 
+  font-size: 25px;
+  line-height: 32px;
+  margin-bottom: 20px; 
 }
 
 #buttons-wrapper {
-  margin-top: 40px;
-  padding-bottom: 40px; 
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
 }
 
 .my-button {
@@ -126,9 +87,10 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 4px;
   width: 160px;
   display: inline-block;
-  margin: 0 4px;
+  margin: 0;
   transition: all 0.3s;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  text-align: center; 
 }
 
 .my-button:hover {
@@ -137,278 +99,160 @@ input[type="number"]::-webkit-outer-spin-button {
 
 #user-btn {
   background-color: #8aa95b;
-  color: white; 
+  color: white;
+  align-items: center;
 }
 
-#admin-btn {
-  border: 2px solid #8aa95b;
+
+/* 네비게이션 스타일 */
+#booking-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#booking-nav a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #555;
+  font-weight: bold;
+}
+
+#booking-nav a:hover {
   color: #8aa95b;
-  font-weight: 600; 
 }
 
-#preview-section img {
-  position: relative;
-  right: 200px; 
-}
-
-#contact-button {
-  display: none; 
-}
-
-#contact-button:hover {
-  background-color: #f6c717;
-  color: white; 
-}
-
-@media only screen and (min-width: 1200px) {
-  #preview-wrapper {
-    width: 70%; }
-  #contact-button {
-    position: absolute;
-    top: 20px;
-    right: 15px;
-    background-color: #fff;
-    color: #000;
-    font-weight: 500;
-    padding: 10px;
-    border-radius: 45px;
-    display: block; } 
-}
-
-#hero-heading-wrapper {
-  margin: 0 auto;
-  margin-top: 80px;
-  position: relative;
-  left: 60px; 
-}
-
-#hero-heading-wrapper h1 {
-  font-weight: 700;
-  font-size: 48px;
-  margin-bottom: 10px;
-  position: relative;
-  bottom: 10px; 
-}
-
-#hero-heading-wrapper h1 span {
-  font-family: "Dancing Script", cursive;
-  font-size: 40px; 
-}
-
-#hero-subtitle {
-  font-size: 16px;
-  margin-bottom: 40px;
-  width: 80%; 
-}
-
-#cta-hero {
-  color: #899095;
-  font-size: 15px;
-  font-weight: 600; }
-
-#hero-heading-wrapper span {
-  font-weight: 700;
-  font-size: 16px; 
-}
-
-.logo h3 {
-  font-weight: 700;
-  font-size: 32px;
-  color: #b2b2b2; 
-}
-
-.menu {
-  display: flex;
-  position: relative;
-  left: 60px; 
-}
-
-.menu ul li {
-  display: inline-block;
-  color: #899095;
-  margin-top: 30px;
-  padding: 0 20px;
-  font-size: 13px;
-  font-weight: 600; 
-}
-
+/* 예약 섹션 스타일 */
 #booking-section {
-  color: #899095;
-  background-image: url(../image/hero_image\ \(1\).jpg);
-  opacity: 0.7;
-  height: 100vh;
+  background-image: url('../image/hero_image\ \(1\).jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  min-width: 100vh;
   display: flex;
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-#booking-section form {
-  margin: 120px 60px;
+#form-wrapper {
+  background-color: white;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  /*height: auto;*/
+  max-width: 600px;
+  text-align: center;
+  display: flex;
+  /*justify-content: center;*/
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#booking-title {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+form label {
+  display: block;
+  text-align: left;
+  margin: 10px 0 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  /*line-height: 1.5; /* 라인 높이 설정 */
+  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+  /*text-align: left; /* 텍스트 정렬 */
+  /*overflow: visible; /* 텍스트 잘림 방지 */
+}
+
+#booking-form {
   background-color: #fff;
   border-radius: 4px;
-  box-shadow: 13px 32px 36px -14px rgba(0, 0, 0, 0.4);
   width: 100%;
-  height: 400px;
-  transition: all 0.3s; 
+  transition: all 0.3s;
+  padding: auto; 
 }
 
-#booking-section form input {
+#booking-form input{
   width: 100%;
-  border: 0px solid #e6e6e6;
-  padding: 10px 40px; 
+  border: 1px solid #e6e6e6;
+  padding: 10px; 
 }
 
-#booking-section ::placeholder {
-  color: #899095;
-  position: relative;
-  right: 20px; 
+form input::placeholder,
+form textarea::placeholder {
+  font-size: 14px;
+  color: #bbb;
+  text-indent: 0;
 }
 
-.input-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 6fr;
-  margin: 20px 60px;
-  padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+@media only screen and (max-width: 768px) {
+  #form-wrapper{
+    padding: 20px;
+  }
 }
 
-.submit-button-wrapper {
-  display: grid;
-  grid-template-columns: 6fr;
-  margin: 30px 60px; 
-}
-
-.submit-button {
-  background-color: #8aa95b;
-  color: #fff;
-  padding: 10px 0;
-  font-weight: 600;
-  border-radius: 4px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s; 
-}
-
-.submit-button:hover {
-  transform: translateY(-7px); 
-}
-
-.fa {
-  color: #f6c717;
-  padding-top: 10px; 
-}
-
-.social {
+#login-section,
+#signup-section {
   display: flex;
-  position: relative;
-  top: 20px;
-  height: 30px;
-  float: right; 
-}
-
-@media only screen and (max-width: 1200px) {
-  .menu ul li {
-    display: none; }
-  #booking-section {
-    margin-top: 80px; }
-  #booking-section form {
-    margin: 80px 0; }
-  .input-wrapper {
-    margin: 20px; } 
-}
-
-#complete-booking {
-  color: #899095;
-  background-image: url('../image/hero_image\ \(1\).jpg');
-  opacity: 0.7;
-  height: 100vh;
-  color: #fff;
-  padding: 80px; 
-}
-
-#complete-booking p {
-  font-size: 16px;
-  color: #fff !important; 
-}
-
-#complete-booking h3 {
-  margin-top: 40px;
-  margin-bottom: 20px; 
-}
-
-#complete-booking input {
-  display: block;
-  padding: 10px 60px;
-  margin-top: 10px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
-}
-
-#complete-booking ::placeholder {
-  color: #fff; 
-}
-
-#complete-booking input[type="text"],
-#complete-booking input[type="tel"],
-#complete-booking input[type="email"] {
-  background: transparent;
-  border: 1px solid #fff; 
-}
-
-.complete-booking-button {
-  display: block;
-  padding: 10px 77px;
-  margin-top: 10px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  color: #222;
-  font-weight: 600;
-  margin-top: 30px; 
-}
-
-@media only screen and (max-width: 1200px) {
-  #complete-booking {
-    margin-top: 120px; } 
-}
-
-#login-container {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin-top: 120px;
 }
 
-#login-container form {
+#login-section form,
+#signup-section form {
+  width: 100%;
+  height: 60vh;
+  max-width: 400px;
+  text-align: left;
   margin-top: 40px;
 }
 
-#login-container input {
+#login-section input,
+#signup-section input {
+  width: 100%;
+  padding: auto;
   margin: 10px auto;
   display: block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-#login-container button {
+#login-section button,
+#signup-section button {
   margin-top: 20px;
 }
 
-#settings-container {
-  margin-top: 80px;
-}
-
-#settings-container input {
-  margin-top: 10px;
-}
-
-#settings-container span {
-  margin-top: 30px;
-  color: #899095;
-  display: block;
-}
-
 .btn-container {
-  margin-top: 20px; 
-}
-
-.logout-button {
-  color: #899095;
-  border: 2px solid #899095;
-  border-radius: 4px;
-  padding: 8px 10px;
-  margin: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: center; 
 }
 
 @media only screen and (max-width: 768px) {
@@ -436,7 +280,7 @@ th {
   border: 1px solid #e4dac3;
   text-align: left;
   padding: 8px !important;
-  width: 30%;
+  width: auto;
 }
 
 #bookings-section .btn,
@@ -451,19 +295,6 @@ th {
   background-color: #fafafa;
 }
 
-#add-booking-section {
-  margin-top: 80px;
-  margin-bottom: 120px;
-}
-
-#add-booking-section form {
-  margin-top: 40px;
-}
-
-#add-booking-section input,
-#add-booking-section select {
-  margin-right: 10px;
-}
 
 #filtered-bookings-section {
   margin-top: 80px;
@@ -477,22 +308,236 @@ th {
   margin-top: 40px;
 }
 
-#edit-section {
-  margin-top: 80px;
+#unavailable-dates-container div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-#edit-form-wrapper {
-  justify-content: center;
+.remove-date-button {
+  background-color: #ec8792;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.remove-date-button:hover {
+  background-color: darkred;
+}
+
+/* 입력 박스 스타일 */
+input[type="text"], 
+input[type="tel"], 
+input[type="email"], 
+input[type="date"], 
+input[type="time"], 
+input[type="number"], 
+textarea, 
+select {
+    padding: 10px; /* 내부 여백 */
+    border: 2px solid #ccc; /* 경계선 */
+    border-radius: 5px; /* 둥근 모서리 */
+    font-size: 16px; /* 텍스트 크기 */
+    background-color: #fff; /* 배경색 */
+}
+
+#form-wrapper button {
+  margin: 20px auto; /* 상하 여백 및 중앙 정렬 */
+  display: block; /* 버튼을 개별적으로 표시 */
+}
+
+table {
+  width: 100%; /* 테이블이 화면 너비에 맞게 확장 */
+  border-collapse: collapse; /* 중복된 테두리를 제거 */
+  margin: 20px 0; /* 위아래 여백 추가 */
+  font-size: 16px; /* 글자 크기 */
+  text-align: center; /* 텍스트 정렬 */
+  background-color: #fff; /* 배경색 */
+}
+
+/* 테이블 헤더 스타일 */
+table th {
+  background-color: #f4f4f4; /* 헤더 배경색 */
+  color: #333; /* 헤더 글자색 */
+  font-weight: bold; /* 헤더 글자 굵기 */
+  padding: 10px; /* 셀 내부 여백 */
+  border: 1px solid #ddd; /* 테두리 추가 */
+  width: auto;
+}
+
+table td {
+  padding: 10px; /* 셀 내부 여백 */
+  border: 1px solid #ddd; /* 테두리 추가 */
+  color: #555; /* 글자 색 */
+  width: auto;
+}
+
+/* Action 영역 버튼 크기 조정 */
+table td form button,
+table td a.btn {
+    width: 80px; /* 버튼 너비 동일하게 설정 */
+    display: inline-block; /* 블록처럼 보이도록 설정 */
+    text-align: center;
+    padding: 5px 10px; /* 적절한 여백 */
+}
+
+/* 로그아웃, 환경설정 버튼 위치 조정 */
+#action-buttons {
   display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  margin-top: 10px; /* 테이블과 약간의 간격 */
+}
+
+#action-buttons .btn {
+  margin-left: 10px; /* 버튼 간격 */
+  background-color: #8aa95b;
+  border: 1px solid #8aa95b;
+}
+
+/* 공통 버튼 스타일 */
+.btn-primary,
+.btn-danger,
+.btn-success,
+.btn-secondary {
+  padding: 10px 20px; /* 공통 패딩 */
+  font-size: 16px; /* 공통 폰트 크기 */
+  line-height: 40px; /* 라인 높이 통일 */
+  border-radius: 5px; /* 둥근 모서리 통일 */
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  width: auto; /* 자동 너비 */
+  margin: 5px; /* 버튼 간격 */
+}
+
+/* 개별 버튼 색상 */
+.btn-primary {
+  background-color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.btn-danger {
+  background-color: #e96d79;
+  border: 1px solid #e96d79;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: 1px solid #28a745;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: 1px solid #6c757d;
+}
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 20px;
 }
 
-#edit-form-wrapper button {
-  display: block;
+.table th, .table td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
 }
 
-#edit-form-wrapper input,
-#edit-form-wrapper button {
-  width: 500px;
+.table th {
+  background-color: #f2f2f2;
+}
+
+footer{
+  margin-top: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* 오른쪽으로 정렬 */
+  gap: 10px; /* 버튼 사이 간격 */
+  margin-top: 20px; /* 버튼 위쪽 여백 */
+}
+
+#search-bookings-section {
   margin-bottom: 20px;
+}
+
+#search-bookings-section form {
+  display: flex;
+  align-items: center;
+}
+
+#search-bookings-section input,
+#search-bookings-section select,
+#search-bookings-section button {
+  margin: o;
+  padding: 5px 10px;
+}
+
+#search-bookings-section label{
+  margin: 0;
+  white-space: nowrap;
+}
+
+#filtered-bookings-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#filtered-bookings-section th, #filtered-bookings-section td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-link {
+  display: block;
+  padding: 10px 15px;
+  color: #007bff;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.page-item.active .page-link {
+  background-color: transparent;
+  color: #222;
+  border: none;
+}
+
+table .btn {
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+  padding: 5px 10px; /* 버튼 내부 여백 추가 */
+  font-size: 14px; /* 글씨 크기 조정 */
+}
+
+#filtered-bookings-section .btn{
+  width: auto;
+}
+
+a.btn.btn-primary[href*="/edit"] {
+  background-color: #5372aa; /* 새로운 배경색 */
+  color: white; /* 텍스트 색 */
+  border: 1px solid #5372aa; /* 테두리 색 */
+  font-size: 14px; /* 폰트 크기 */
+  padding: 8px 12px; /* 버튼 내부 여백 */
+  border-radius: 4px; /* 둥근 모서리 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 */
+  width: auto;
 }
