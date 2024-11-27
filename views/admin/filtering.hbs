@@ -1,33 +1,40 @@
-
-  <section id="filtered-bookings-section" class="container">
-    <h2>예약 내역</h2>
-   <strong>날짜: </strong>{{date}}<br> <strong>시간: </strong>{{time}}
-    <table>
+<section id="filtered-bookings-section" class="container">
+  <h2>예약 내역</h2>
+  <p><strong>날짜:</strong> {{date}} <br> <strong>시간:</strong> {{time}}</p>
+  
+  <table>
     <thead>
-      <th>이름</th>
-      <th>날짜</th>
-      <th>전화번호</th>
-      <th>인원</th>
-      <th>Action</th>
+      <tr>
+        <th>이름</th>
+        <th>날짜 | 시간</th>
+        <th>전화번호 | 이메일</th>
+        <th>인원</th>
+        <th>Action</th>
+      </tr>
     </thead>
     <tbody>
       {{#each filteredBookings}}
       <tr>
-        <td>{{firstName}} {{lastName}} </td>
-         <td>{{date}} | {{time}}</td>
-        <td>{{phone}} {{email}}</td>
+        <td>{{firstName}} {{lastName}}</td>
+        <td>{{formatDate date}} | {{time}}</td>
+        <td>{{phone}} | {{email}}</td>
         <td>{{people}}</td>
         <td>
           <!-- DELETE -->
-          <form action="/admin/{{id}}/delete" method="POST">
+          <form action="/admin/{{_id}}/delete" method="POST" style="display:inline;">
             <button class="btn btn-danger" type="submit">삭제</button>
           </form>
           <!-- EDIT -->
-            <a class="btn btn-primary" href="/admin/{{id}}/edit">수정</a>
+          <a class="btn btn-primary" href="/admin/{{_id}}/edit">수정</a>
         </td>
+      </tr>
+      {{else}}
+      <tr>
+        <td colspan="5">예약 내역이 없습니다.</td>
       </tr>
       {{/each}}
     </tbody>
   </table>
-         <p><a href="/auth/private">모든 예약 보기</a></p>
-  </section>
+  
+  <p style="text-align: right;"><a href="/auth/private">모든 예약 보기</a></p>
+</section>

@@ -1,67 +1,89 @@
-<div class="btn-container text-right">
-  <a href="/admin/settings">설정 페이지</a>
-  <a class="logout-button" href="/auth/logout">로그아웃</a>
-</div>
+<section id="private-section" class="container">
+  <h2 style="margin-top: 50px;">관리자 페이지</h2>
+  <p>환영합니다, {{user.username}}!</p>
+  <br><br>
 
-<section class="container">
-</section>
-
-<section class="container" id="bookings-section">
-  <!-- FILTER-->
-  <h2>모든 예약</h2>
-  <form action="/admin/filter-bookings" action="GET">
-    <p>날짜 선택: <input autocomplete="off" type="text" class="datepicker-admin" name="date" required></p>
-    <p>시간 선택 <select name="time"></p>
-    <option value="{{values.[1].Slot1}}">{{values.[1].Slot1}}</option>
-    <option value="{{values.[1].Slot2}}">{{values.[1].Slot2}}</option>
-    </select>
-    <button style="width: 80px" class="btn btn-primary" type="submit">예약 검색</button><br><br>
-  </form>
-
+  <h3>예약 목록</h3>
   <table>
     <thead>
-      <th>이름</th>
-      <th>날짜</th>
-      <th>전화번호</th>
-      <th>인원</th>
-      <th>Action</th>
+      <tr>
+        <th>날짜</th>
+        <th>시간</th>
+        <th>이름</th>
+        <th>전화번호</th>
+        <th>인원</th>
+        <th>메시지</th>
+        <th>Action</th>
+      </tr>
     </thead>
     <tbody>
-      {{#each values.[0]}}
+      {{#each bookings}}
       <tr>
-        <td>{{firstName}} {{lastName}} </td>
-         <td>{{date}} | {{time}}</td>
-        <td>{{phone}} </td>
+        <td>{{date}}</td>
+        <td>{{time}}</td>
+        <td>{{lastName}} {{firstName}}</td>
+        <td>{{phone}}</td>
         <td>{{people}}</td>
+        <td>{{message}}</td>
         <td>
           <!-- DELETE -->
-          <form action="/admin/{{id}}/delete" method="POST">
+          <form action="/admin/{{_id}}/delete" method="POST" style="display:inline;">
             <button class="btn btn-danger" type="submit">삭제</button>
           </form>
           <!-- EDIT -->
-            <a class="btn btn-primary" href="/admin/{{id}}/edit">수정</a>
+          <a class="btn btn-primary" href="/admin/{{_id}}/edit">수정</a>
         </td>
+      </tr>
+      {{else}}
+      <tr>
+        <td colspan="7">예약 내역이 없습니다.</td>
       </tr>
       {{/each}}
     </tbody>
   </table>
-</section>
 
-<!-- ADD -->
-<section class="container" id="add-booking-section">
+  <nav aria-label="Page navigation">
+  <ul class="pagination">
+    {{#if totalPages}}
+      {{#range 1 totalPages}}
+        <li class="page-item {{#if (eq this ../currentPage)}}active{{/if}}">
+          {{#if (eq this ../currentPage)}}
+            <span class="page-link">{{this}}</span>
+          {{else}}
+            <a class="page-link" href="/auth/private?page={{this}}">{{this}}</a>
+          {{/if}}
+        </li>
+      {{/range}}
+    {{else}}
+      <li class="page-item disabled">
+        <span class="page-link">No Pages</span>
+      </li>
+    {{/if}}
+  </ul>
+</nav>
 
-  <h2>예약 추가</h2>   
-  <form action="/admin/add-booking" method="POST">
-    <input autocomplete="off" placeholder="날짜 선택" type="text" class="datepicker-admin" name="date">
-    <select name="time">
-      <option value="{{values.[1].Slot1}}">{{values.[1].Slot1}}</option>
-      <option value="{{values.[1].Slot2}}">{{values.[1].Slot2}}</option>
+  <section id="search-bookings-section" class="container">
+    <h3>예약 검색</h3>
+    <form action="/admin/filtering" method="GET" style="display: flex; gap: 10px;">
+      <label for="date">날짜:</label>
+      <input type="date" id="date" name="date">
+
+    <label for="time">시간:</label>
+    <select id="time" name="time">
+      <option value="">--:--</option>
+      {{#each timeSlots}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
     </select>
-    <input type="text" name="firstName" placeholder="이름">
-    <input type="text" name="lastName" placeholder="성">
-    <input type="number" name="people" placeholder="인원 수">
-    <input type="tel" name="phone" placeholder="전화번호">
 
-    <button class="btn btn-success" type="submit">추가하기</button>
-    <form>
+    <button class="btn btn-primary" type="submit" style="white-space: nowrap;">검색</button>
+    </form>
+  </section>
+
+
+
+  <div id="action-buttons">
+    <a class="btn btn-primary" href="/admin/settings">환경 설정</a>
+    <a class="btn btn-danger" href="/auth/logout">로그아웃</a>
+  </div>
 </section>

@@ -1,19 +1,39 @@
-<section id="edit-section" class="container">
-   <h2 class="text-center">예약 수정하기</h2>
-  <div id="edit-form-wrapper">
-  
-  
-  <form action="/admin/{{thisBooking.id}}/edit" method="POST">  
-     <p>날짜</p><input type="text" name="date" value="{{thisBooking.date}}">
-     <p>시간</p><input type="text" name="time" value="{{thisBooking.time}}">
-       <p>이름</p> <input type="text" name="firstName" value="{{thisBooking.firstName}}">
-        <p>성</p>  <input type="text" name="lastName" value="{{thisBooking.lastName}}">
-        <p>인원</p> <input type="number" name="people" value="{{thisBooking.people}}">
-         <p>전화번호</p> <input type="tel" name="phone" value="{{thisBooking.phone}}">
-         
- 
-      <button class="btn btn-primary">수정</button>
+<section id="edit-booking-section" class="container">
+  <h2 style="margin-top: 50px;">예약 수정</h2>
+  <form action="/admin/{{booking._id}}/edit" method="POST">
+    <label for="date">예약 날짜:</label>
+    <input type="date" id="date" name="date" value="{{booking.date}}" required>
 
+    <label for="time">예약 시간:</label>
+    <select id="time" name="time" required>
+    {{#each timeSlots}}
+    <option value="{{this}}" {{#ifEquals this ../booking.time}}selected{{/ifEquals}}>
+        {{this}}
+    </option>
+    {{/each}}
+    </select>
+
+    <label for="people">인원 수:</label>
+    <input type="number" id="people" name="people" value="{{booking.people}}" min="1" max="10" required>
+
+    <label for="firstName">이름:</label>
+    <input type="text" id="firstName" name="firstName" value="{{booking.firstName}}" required>
+
+    <label for="lastName">성:</label>
+    <input type="text" id="lastName" name="lastName" value="{{booking.lastName}}" required>
+
+    <label for="phone">전화번호:</label>
+    <input type="tel" id="phone" name="phone" value="{{booking.phone}}" required>
+
+    <label for="email">이메일:</label>
+    <input type="email" id="email" name="email" value="{{booking.email}}" required>
+
+    <label for="message">메시지:</label>
+    <textarea id="message" name="message">{{booking.message}}</textarea>
+    
+    <div class="button-container">
+      <button class="btn btn-primary" type="submit">수정</button>
+    <a class="btn btn-secondary" href="/auth/private">취소</a>
+    </div>
   </form>
-  </div>
 </section>

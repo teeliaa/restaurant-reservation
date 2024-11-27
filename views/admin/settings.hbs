@@ -1,0 +1,99 @@
+<section id="settings-section" class="container">
+  <h2 style="margin-top: 50px;">환경 설정</h2>
+  <br>
+  <h3>예약 불가 날짜 관리</h3>
+
+  <form action="/admin/settings/unavailable-dates/add" method="POST" id="add-date-form">
+    <label for="new-date">예약 불가 날짜 추가:</label>
+    <input type="date" id="new-date" name="date" required>
+      <button class="btn btn-primary" type="submit">추가</button>
+  </form>
+  <br>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>날짜</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="unavailable-dates-container">
+      {{#each unavailableDates}}
+      <tr>
+        <td>{{this}}</td>
+        <td>
+          <button class="btn btn-danger remove-date-button" data-date="{{this}}">삭제</button>
+        </td>
+      </tr>
+      {{else}}
+      <tr>
+        <td colspan="2">현재 예약 불가 날짜가 없습니다.</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <br>
+  <h3>예약 설정</h3>
+
+  <!-- 시간 슬롯과 최대 좌석 수를 수평으로 나열 -->
+  <div style="display: flex; justify-content: space-between; gap: 20px;">
+    <table class="table" style="width: 48%;">
+      <thead>
+        <tr>
+          <th>현재 설정된 시간 슬롯</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if timeSlots}}
+        {{#each timeSlots}}
+        <tr>
+          <td>{{this}}</td>
+        </tr>
+        {{else}}
+        <tr>
+          <td>현재 설정된 시간 슬롯이 없습니다.</td>
+        </tr>
+        {{/each}}
+        {{/if}}
+      </tbody>
+    </table>
+
+    <table class="table" style="width: 48%;">
+      <thead>
+        <tr>
+          <th>현재 최대 좌석수</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if maxSeats}}
+        <tr>
+          <td>{{maxSeats}} 좌석</td>
+        </tr>
+        {{else}}
+        <tr>
+          <td>현재 설정된 좌석 수가 없습니다.</td>
+        </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 설정 변경 폼 -->
+  <form action="/admin/settings/update" method="POST" style="margin-top: 30px;">
+    <label for="time-slot-1">시간대 1:</label>
+    <input type="time" id="time-slot-1" name="timeSlot1" value="{{timeSlots.[0]}}" required>
+
+    <label for="time-slot-2">시간대 2:</label>
+    <input type="time" id="time-slot-2" name="timeSlot2" value="{{timeSlots.[1]}}" required>
+
+    <label for="max-seats">최대 좌석수:</label>
+    <input type="number" id="max-seats" name="maxSeats" value="{{maxSeats}}" min="1" required>
+
+    <button class="btn btn-success" type="submit">설정 저장</button>
+  </form>
+
+  <div style="margin-top: 30px; text-align: right;" >
+    <a href="/auth/private" class="btn btn-primary">예약 관리</a>
+  </div>
+</section>
