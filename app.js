@@ -22,7 +22,7 @@ if (!process.env.MONGODB_URI) {
 const app = express();
 
 const corsoption = {
-    origin: ["http://localhost:3000", "https://localhost:3000"],
+    origin: ["http://localhost:8888", "https://localhost:8888"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
 };
@@ -54,7 +54,7 @@ app.use(
                     "'self'", 
                     "https://fonts.gstatic.com" // Google Fonts의 폰트 소스
                 ],
-                "connect-src": ["'self'", "http://localhost:3000"], // API 호출 허용
+                "connect-src": ["'self'", "http://localhost:8888"], // API 호출 허용
             },
         },
     })
@@ -162,7 +162,7 @@ app.use('/admin', (req, res, next) => {
 app.use('/admin', admin);
 
 // 서버 시작
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8888;
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
 });
