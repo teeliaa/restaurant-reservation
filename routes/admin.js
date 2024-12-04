@@ -225,5 +225,21 @@ router.post('/:id/delete', async (req, res) => {
     }
 });
 
+// 공개 API: 예약 불가 날짜와 시간 슬롯 제공
+router.get('/public-settings', async (req, res) => {
+    try {
+        const config = await Config.findOne() || { unavailableDates: [], timeSlots: []};
+        res.json({
+            unavailableDates: config.unavailableDates || [],
+            timeSlots: config.timeSlots || [],
+        });
+
+    } catch (error) {
+        console.error("Error fetching public settings:", error);
+        res.status(500).json({ message: "서버 오류" });
+    }
+});
+
 
 module.exports = router;
+
