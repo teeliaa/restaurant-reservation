@@ -21,45 +21,11 @@ if (!process.env.MONGODB_URI) {
 
 const app = express();
 
-const corsoption = {
-    origin: ["http://10.10.15.133:9118"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-};
-
-app.use(cors(corsoption));
-
 // DB 연결
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(x => console.log(`DB Connected! Database name: "${x.connections[0].name}"`))
   .catch(err => console.error('Error connecting to DB', err));
-
-// 보안 강화
-app.use(helmet());
-
-app.use(
-    helmet({
-        contentSecurityPolicy: {
-            directives: {
-                "default-src": ["'self'"],
-                "script-src": ["'self'", "https://code.jquery.com", "https://cdn.jsdelivr.net"],
-                "style-src": [
-                    "'self'", 
-                    "https://fonts.googleapis.com", // Google Fonts 허용
-                    "https://cdnjs.cloudflare.com", 
-                    "'unsafe-inline'" // 인라인 스타일 허용
-                ],
-                "font-src": [
-                    "'self'", 
-                    "https://fonts.gstatic.com" // Google Fonts의 폰트 소스
-                ],
-                "connect-src": ["'self'", "http://10.10.15.133:9118"], // API 호출 허용
-            },
-        },
-    })
-);
-
 
 
 // 로그 미들웨어
@@ -99,11 +65,6 @@ app.use(
         sourceMap: true,
     })
 );
-
-app.use((req, res, next) => {
-    res.setHeader('Origin-Agent-Cluster', '?0');
-    next();
-});
 
 // 뷰 엔진 설정
 app.set('views', path.join(__dirname, 'views'));
@@ -167,7 +128,7 @@ app.use('/admin', (req, res, next) => {
 app.use('/admin', admin);
 
 // 서버 시작
-const PORT = process.env.PORT || 9118;
+const PORT = process.env.PORT || 8888;
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
 });
