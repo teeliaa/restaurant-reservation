@@ -229,8 +229,20 @@ router.post('/:id/delete', async (req, res) => {
 router.get('/public-settings', async (req, res) => {
     try {
         const config = await Config.findOne() || { unavailableDates: [], timeSlots: []};
+        const formattedUnavailableDates = config.unavailableDates
+        .filter(date => date)
+        .map(date => {
+            try{
+                return new Date(date).toISOString().split("T")[0];
+            } catch(error){
+                console.error(`Error formatting date: ${date}`, error);
+                return null;
+            }
+        })
+        .filter(date => date !== null);
+        
         res.json({
-            unavailableDates: config.unavailableDates || [],
+            unavailableDates: formattedUnavailableDates,
             timeSlots: config.timeSlots || [],
         });
 
@@ -242,4 +254,3 @@ router.get('/public-settings', async (req, res) => {
 
 
 module.exports = router;
-
