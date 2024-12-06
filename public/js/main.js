@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 설정 데이터를 서버에서 가져옴
 function fetchConfig() {
-    fetch("/admin/settings/config")
+    fetch("/admin/public-settings")
         .then(response => response.json())
         .then(config => {
             console.log("Config loaded:", config);
@@ -37,10 +37,13 @@ function initializeDatepicker() {
     const dateInput = document.getElementById("date");
     if (!dateInput) return;
 
+    console.log("Initializing Datepicker with unavailable dates: ", unavailableDates);
+
     $(dateInput).datepicker({
         dateFormat: "yy-mm-dd",
         beforeShowDay: function (date) {
             const dateString = $.datepicker.formatDate("yy-mm-dd", date);
+            console.log(`Checking date: ${dateString}, is unavailable: ${unavailableDates.includes(dateString)}`);
             return unavailableDates.includes(dateString)
                 ? [false, "", "예약 불가"] // Prevent selection of unavailable dates
                 : [true, ""];
